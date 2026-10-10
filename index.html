@@ -119,10 +119,11 @@
   .marquee::before, .marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none; }
   .marquee::before { left: 0; background: linear-gradient(90deg, var(--bg-2), transparent); }
   .marquee::after { right: 0; background: linear-gradient(-90deg, var(--bg-2), transparent); }
-  .marquee-track { display: flex; width: max-content; animation: slide 36s linear infinite; }
+  .marquee-track { display: flex; width: max-content; animation: slide 110s linear infinite; will-change: transform; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
   .marquee-track span {
     display: flex; align-items: center; gap: 34px; padding: 22px 17px;
-    font-family: var(--serif); font-style: italic; font-size: 19px; letter-spacing: 3px; color: var(--muted); white-space: nowrap;
+    font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 21px; letter-spacing: 2px; color: var(--muted); white-space: nowrap;
   }
   .marquee-track span i { width: 5px; height: 5px; background: var(--violet); transform: rotate(45deg); display: inline-block; }
   @keyframes slide { to { transform: translateX(-50%); } }
@@ -149,6 +150,28 @@
   .row-item .arr { justify-self: end; color: var(--muted); transition: .35s; }
   .row-item .arr svg { width: 30px; height: 30px; }
   .row-item:hover .arr { color: var(--violet); transform: translateX(8px); }
+
+  /* ================= COMPARAȚIE FEATURED ================= */
+  .compare { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 26px; margin-bottom: 22px; }
+  .cmp-divider { background: linear-gradient(180deg, transparent, var(--line-2) 30%, var(--line-2) 70%, transparent); }
+  .cmp-card { position: relative; overflow: hidden; border: 1px solid var(--line); }
+  .cmp-card img {
+    width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+    transform: scale(1.08); clip-path: inset(0 0 100% 0);
+    transition: transform 1.4s cubic-bezier(.2,.7,.2,1), clip-path 1.1s cubic-bezier(.76,0,.24,1);
+  }
+  .compare.in .cmp-card img { transform: scale(1); clip-path: inset(0 0 0 0); }
+  .cmp-card:hover img { transform: scale(1.04); }
+  .cmp-tag {
+    position: absolute; top: 18px; left: 18px; z-index: 3;
+    font-size: 10px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+    padding: 7px 14px; backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.16); background: rgba(7,7,10,.5); color: rgba(255,255,255,.85);
+  }
+  .cmp-tag.after { color: var(--violet); border-color: var(--line-2); }
+  .cmp-cap { text-align: center; color: var(--muted); font-size: 13px; font-weight: 300; margin-bottom: 64px; }
+  .cmp-cap b { color: var(--text); font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 16px; }
+  @media (prefers-reduced-motion: reduce) { .cmp-card img { transform: none; clip-path: none; transition: none; } }
 
   /* ================= GALERIE ================= */
   .masonry { columns: 3; column-gap: 26px; }
@@ -321,7 +344,8 @@
 
   /* ================= RESPONSIVE ================= */
   @media (max-width: 1080px) {
-    .ba-grid, .video-grid, .price-grid { grid-template-columns: 1fr 1fr; }
+    .compare { grid-template-columns: 1fr 1fr; }
+    .video-grid, .price-grid { grid-template-columns: 1fr 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
     .step { border-left: 0; border-top: 1px solid var(--line); }
     .masonry { columns: 2; }
@@ -336,7 +360,8 @@
     .nav-links, .nav-phone { display: none; }
     #menuBtn { display: grid; place-items: center; }
     .nav-cta .btn { padding: 13px 22px; font-size: 10px; }
-    .ba-grid, .video-grid, .price-grid { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+    .video-grid, .price-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
     .masonry { columns: 1; }
     .contact-grid { grid-template-columns: 1fr; gap: 44px; }
@@ -476,6 +501,19 @@
       </div>
       <p class="sub">O selecție din lucrările recente — materiale, cusături, lumini și reflexii, exact cum pleacă din atelier.</p>
     </div>
+
+    <div class="compare reveal">
+      <figure class="cmp-card">
+        <img src="assets/img/cmp-scaun-inainte.jpg" alt="Scaun uzat și pătat, înainte de retapitare" loading="lazy">
+        <figcaption class="cmp-tag">Înainte</figcaption>
+      </figure>
+      <div class="cmp-divider" aria-hidden="true"></div>
+      <figure class="cmp-card">
+        <img src="assets/img/cmp-scaun-dupa.jpg" alt="Scaun retapitat în țesătură gri tehnică, după" loading="lazy">
+        <figcaption class="cmp-tag after">După</figcaption>
+      </figure>
+    </div>
+    <p class="cmp-cap">Același scaun, altă viață — <b>retapire completă</b></p>
 
     <div class="masonry">
       <div class="m-item reveal"><img src="assets/img/g-scaun-retapitat.jpg" alt="Scaun retapitat cu material premium" loading="lazy"><div class="cap"><span>Retapitări</span><b>Scaun — țesătură tehnică</b></div></div>
