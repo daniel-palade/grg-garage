@@ -29,7 +29,11 @@ README.md
   (plafon+stâlpi retapițați → steluțe → rezultat final), fără before/after
 - Galerie masonry cu captions la hover
 - **Cele mai vizionate 3 clipuri TikTok** integrate cu player-ul oficial (view-count real)
-- Pași de proces, ofertă personalizată, bandă CTA, contact
+- Pași de proces, **FAQ cu 5 întrebări** (acordeon, cu schema FAQPage pentru Google), ofertă personalizată, bandă CTA, contact
+- **Adresă reală + hartă Google** — Strada Combinatului nr. 7, Galați (dark-map stilizat)
+- **Secțiune Colaborări** pentru firme partenere (service-uri, dealeri, spălătorii, shop-uri)
+- **Strip de încredere** (materiale premium, garanție, ofertă clară, răspuns rapid) sub lista de servicii
+- **Buton „înapoi sus”** care apare la scroll + buton WhatsApp flotant
 - **Tranziții cinematice**: intro cu perdele + monograma, titlul hero literă-cu-litră (blur-in),
   prăfușcă violetă plutind pe canvas, film grain peste tot site-ul (textură generată cu Python),
   nebula violetă mascată în zona titlului (generată cu Python), cursor cu aură, butoane magnetice,
