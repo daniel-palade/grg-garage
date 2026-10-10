@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daniel-palade.github.io/grg-garage/sitemap.xml

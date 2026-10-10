@@ -19,12 +19,14 @@ README.md
 - Temă **negru profund + violet neon** (#A78BFA / #6D28D9), atmosferă premium/luxury
 - Tipografie: **Cormorant Garamond** (titluri serif elegante) + **Manrope** (text)
 - Fără emoji-uri — iconițe SVG minimalist desenate la linie
-- Hero cinematografic cu poză reală din atelier + parallax subtil
+- Hero cinematografic — **Audi-ul crem cu steluțe și ambient violet**, poză reală din atelier + parallax subtil
 - Banda de servicii statică, eleganță tip editorial (fără animație)
 - **5 secțiuni detaliate de servicii** — fiecare rând din lista de servicii duce prin scroll
   la secțiunea lui, cu text motivațional, materiale premium, argumente pro și CTA WhatsApp.
-  Fiecare secțiune are un **slider Înainte/După** cu 2 poze specifice rubricii (exemple din stock
-  foto cu licență liberă — Pexels), etichetate onest „Exemplu”
+  Fiecare secțiune are un **slider Înainte/După**: **lucrări reale** pentru Detailing interior (scaun
+  murdat→curat) și Polish faruri (far matuit→polimerizat); exemple stock (Pexels, licență liberă)
+  pentru Polish vopsea și Ambient, etichetate onest „Exemplu”. La Retapitări: **galerie în 3 pași**
+  (plafon+stâlpi retapițați → steluțe → rezultat final), fără before/after
 - Galerie masonry cu captions la hover
 - **Cele mai vizionate 3 clipuri TikTok** integrate cu player-ul oficial (view-count real)
 - Pași de proces, ofertă personalizată, bandă CTA, contact
@@ -55,6 +57,17 @@ git init && git add . && git commit -m "Site GRG Garage"
 git remote add origin https://github.com/USERNAME/grg-garage.git
 git push -u origin main
 ```
+
+## SEO (implementat)
+
+- Titlu + descriere + keywords optimizate: *retapitari Galați/Brăila, steluțe în plafon, detailing auto,
+  polish faruri, cosmetica auto, polish mașini, lumini ambientale*
+- **JSON-LD LocalBusiness** (areaServed Galați + Brăila, telefon, catalog de servicii)
+- `sitemap.xml` + `robots.txt` incluse
+- Imagini cu `alt` descriptive + încărcare lazy
+- **Următorii pași (manual, gratuit)**: înscrie site-ul în Google Search Console și creează un
+  **Google Business Profile** pentru GRG Garage — profilul de firmă Google e factorul #1 pentru
+  căutările locale de tip „retapitari Galați”
 
 ## Domeniu propriu (opțional)
 

@@ -3,11 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRG Garage — Studio de Detailing Auto | Galați · Brăila</title>
-<meta name="description" content="GRG Garage — retapitări premium, detailing auto, recondiționare faruri și lumini ambientale. Un studio, un standard: perfecțiunea. Galați și Brăila.">
+<title>Retapitări Auto, Steluțe în Plafon & Detailing Auto în Galați–Brăila | GRG Garage</title>
+<meta name="description" content="GRG Garage — retapitări auto, steluțe în plafon, detailing interior, polish faruri cu polimerizare, cosmetica auto și polish mașini în Galați și Brăila. Ofertă personalizată în aceeași zi: 0724 341 598.">
+<meta name="keywords" content="retapitari Galați, retapitari Brăila, retapitari auto, stelute plafon, steluțe în plafon, detailing auto Galați, detailing Brăila, polish faruri, polish masini, cosmetica auto, lumini ambientale, spălătorie auto">
+<meta name="geo.region" content="RO-GL">
+<meta name="geo.placename" content="Galați, Brăila">
+<meta name="theme-color" content="#07070A">
 <meta property="og:title" content="GRG Garage — Studio de Detailing Auto">
 <meta property="og:description" content="Retapitări premium, detailing, recondiționare faruri și lumini ambientale în Galați și Brăila.">
 <meta property="og:image" content="assets/img/hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "GRG Garage",
+  "description": "Retapitări auto, steluțe în plafon, detailing interior și exterior, polish faruri cu polimerizare, cosmetica auto în Galați și Brăila.",
+  "telephone": "+40724341598",
+  "url": "https://daniel-palade.github.io/grg-garage/",
+  "image": "https://daniel-palade.github.io/grg-garage/assets/img/hero.jpg",
+  "priceRange": "$$",
+  "address": { "@type": "PostalAddress", "addressRegion": "Galați", "addressCountry": "RO" },
+  "areaServed": [
+    { "@type": "City", "name": "Galați" },
+    { "@type": "City", "name": "Brăila" }
+  ],
+  "sameAs": ["https://www.tiktok.com/@grggarage99"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicii detailing auto",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Retapitări auto și steluțe în plafon" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Detailing interior" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Polish și corecție vopsea" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Polish faruri cu polimerizare" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lumini ambientale" } }
+    ]
+  }
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307070A'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='30' font-style='italic' fill='%23A78BFA' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -187,6 +220,19 @@
   .svc-ba .ba-tag.l { left: 16px; } .svc-ba .ba-tag.r { right: 16px; color: var(--violet); border-color: var(--line-2); }
   .svc-ba-note { text-align: center; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-top: 14px; font-weight: 600; }
   @media (prefers-reduced-motion: reduce) { .svc-ba { transform: none; clip-path: none; transition: none; } }
+
+  /* Galerie în pași — retapitări */
+  .svc-step { margin: 0; }
+  .svc-step + .svc-step { margin-top: 26px; }
+  .svc-step img {
+    width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--line);
+    transform: scale(1.06); clip-path: inset(0 0 100% 0);
+    transition: transform 1.4s cubic-bezier(.2,.7,.2,1), clip-path 1.1s cubic-bezier(.76,0,.24,1);
+  }
+  .svc-media.in .svc-step img { transform: scale(1); clip-path: inset(0 0 0 0); }
+  .svc-step figcaption { text-align: center; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-top: 12px; font-weight: 600; }
+  .svc-step figcaption b { color: var(--violet); font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { .svc-step img { transform: none; clip-path: none; transition: none; } }
 
   /* ================= GALERIE ================= */
   .masonry { columns: 3; column-gap: 26px; }
@@ -376,7 +422,7 @@
     section.sect { padding: 84px 0; }
     .nav-links, .nav-phone { display: none; }
     #menuBtn { display: grid; place-items: center; }
-    .nav-cta .btn { padding: 13px 22px; font-size: 10px; }
+    .nav-cta .btn { display: none; }
     .tt-grid, .price-grid { grid-template-columns: 1fr; }
     .svc-grid.rev .svc-media { order: 0; }
     .steps { grid-template-columns: 1fr; }
@@ -435,9 +481,9 @@
   <div class="hero-neb" aria-hidden="true"><img src="assets/img/nebula.jpg" alt=""></div>
   <canvas id="dust" aria-hidden="true"></canvas>
   <div class="wrap hero-inner">
-    <span class="kicker">Studio de detailing — Galați · Brăila</span>
+    <span class="kicker">Retapitări · Detailing · Steluțe · Polish Faruri — Galați &amp; Brăila</span>
     <h1 id="heroTitle">Mașina ta,<br><em>reinventată</em> din primul detaliu.</h1>
-    <p class="lead">Retapitări premium, detailing profund, recondiționare faruri și lumini ambientale. Fiecare mașină intră în atelier ca un proiect și iese ca o declarație de stil.</p>
+    <p class="lead">Retapitări auto, steluțe în plafon, detailing interior, polish faruri și cosmetica auto — în Galați și Brăila. Fiecare mașină intră în atelier ca un proiect și iese ca o declarație de stil.</p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20ma%C8%99ina%20mea." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3 4c-.3 0-.7.1-1 .5-.4.4-.9 1-.9 2s.7 2 1 2.4c.4.5 1.9 3 4.6 4 .6.3 1.2.4 1.7.5.7.1 1.4 0 1.9-.2.5-.2 1-.7 1.2-1.2.1-.5.1-1 .1-1.1-.1-.2-.3-.3-.6-.4l-2-.9c-.3-.1-.5-.2-.7.1l-.8 1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2-1.2-.7-.7-1-1.3-1.2-1.6-.1-.3 0-.4.1-.6l.6-.7c.1-.2.1-.4 0-.6l-.8-2c-.2-.4-.4-.4-.6-.4h-.2z"/></svg>
@@ -523,13 +569,18 @@
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20retapitare%20interior." target="_blank" rel="noopener">Cere ofertă pentru retapitare</a>
     </div>
     <div class="svc-media reveal">
-      <div class="svc-ba" data-slider>
-        <img src="assets/img/ba-retapitari-dupa.jpg" alt="Scaun retapitat în piele neagră premium" loading="lazy">
-        <img class="ba-before-img" src="assets/img/ba-retapitari-inainte.jpg" alt="Scaun rupt și uzat, înainte de retapitare" loading="lazy">
-        <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
-        <div class="ba-handle"></div>
-      </div>
-      <p class="svc-ba-note">Exemplu — trage bara</p>
+      <figure class="svc-step">
+        <img src="assets/img/retap-gal-1.jpg" alt="Retapitare completă — plafon și stâlpi, material gri" loading="lazy">
+        <figcaption>01 — Plafon și stâlpi retapițați</figcaption>
+      </figure>
+      <figure class="svc-step">
+        <img src="assets/img/retap-gal-2.jpg" alt="Instalare steluțe în plafonul retapitat" loading="lazy">
+        <figcaption>02 — Instalarea steluțelor</figcaption>
+      </figure>
+      <figure class="svc-step">
+        <img src="assets/img/retap-gal-3.jpg" alt="Plafon retapitat cu steluțe și lumini ambientale" loading="lazy">
+        <figcaption>03 — Rezultatul final</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -550,12 +601,12 @@
     </div>
     <div class="svc-media reveal">
       <div class="svc-ba" data-slider>
-        <img src="assets/img/ba-detailing-dupa.jpg" alt="Interior curat, de lux, după detailing" loading="lazy">
-        <img class="ba-before-img" src="assets/img/ba-detailing-inainte.jpg" alt="Interior uzat și murdar, înainte de detailing" loading="lazy">
+        <img src="assets/img/ba-detailing-dupa.jpg" alt="Scaun curat după detailing interior GRG Garage" loading="lazy">
+        <img class="ba-before-img" src="assets/img/ba-detailing-inainte.jpg" alt="Scaun murdar, înainte de detailing interior" loading="lazy">
         <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
         <div class="ba-handle"></div>
       </div>
-      <p class="svc-ba-note">Exemplu — trage bara</p>
+      <p class="svc-ba-note">Lucrare reală din atelier — trage bara</p>
     </div>
   </div>
 </section>
@@ -602,12 +653,12 @@
     </div>
     <div class="svc-media reveal">
       <div class="svc-ba" data-slider>
-        <img src="assets/img/ba-faruri-dupa.jpg" alt="Far limpede și strălucitor, după recondiționare" loading="lazy">
-        <img class="ba-before-img" src="assets/img/ba-faruri-inainte.jpg" alt="Far uzat și îngălbenit, înainte de recondiționare" loading="lazy">
+        <img src="assets/img/ba-faruri-dupa.jpg" alt="Far curat și lucios după polish cu polimerizare" loading="lazy">
+        <img class="ba-before-img" src="assets/img/ba-faruri-inainte.jpg" alt="Far matuit și îngălbenit, înainte de polish" loading="lazy">
         <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
         <div class="ba-handle"></div>
       </div>
-      <p class="svc-ba-note">Exemplu — trage bara</p>
+      <p class="svc-ba-note">Lucrare reală din atelier — trage bara</p>
     </div>
   </div>
 </section>
