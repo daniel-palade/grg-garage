@@ -20,7 +20,12 @@ README.md
 - Tipografie: **Cormorant Garamond** (titluri serif elegante) + **Manrope** (text)
 - Fără emoji-uri — iconițe SVG minimalist desenate la linie
 - Hero cinematografic cu poză reală din atelier + parallax subtil
-- Galerie masonry cu captions la hover, secțiune video, pași de proces, ofertă personalizată
+- Banda de servicii statică, eleganță tip editorial (fără animație)
+- **5 secțiuni detaliate de servicii** — fiecare rând din lista de servicii duce prin scroll
+  la secțiunea lui, cu text motivațional, materiale premium, argumente pro și CTA WhatsApp
+- Galerie masonry cu captions la hover
+- **Cele mai vizionate 3 clipuri TikTok** integrate cu player-ul oficial (view-count real)
+- Pași de proces, ofertă personalizată, bandă CTA, contact
 - **Tranziții cinematice**: intro cu perdele + monograma, titlul hero literă-cu-litră (blur-in),
   prăfușcă violetă plutind pe canvas, film grain peste tot site-ul (textură generată cu Python),
   nebula violetă mascată în zona titlului (generată cu Python), cursor cu aură, butoane magnetice,
