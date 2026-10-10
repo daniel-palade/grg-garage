@@ -22,7 +22,9 @@ README.md
 - Hero cinematografic cu poză reală din atelier + parallax subtil
 - Banda de servicii statică, eleganță tip editorial (fără animație)
 - **5 secțiuni detaliate de servicii** — fiecare rând din lista de servicii duce prin scroll
-  la secțiunea lui, cu text motivațional, materiale premium, argumente pro și CTA WhatsApp
+  la secțiunea lui, cu text motivațional, materiale premium, argumente pro și CTA WhatsApp.
+  Fiecare secțiune are un **slider Înainte/După** cu 2 poze specifice rubricii (exemple din stock
+  foto cu licență liberă — Pexels), etichetate onest „Exemplu”
 - Galerie masonry cu captions la hover
 - **Cele mai vizionate 3 clipuri TikTok** integrate cu player-ul oficial (view-count real)
 - Pași de proces, ofertă personalizată, bandă CTA, contact

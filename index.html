@@ -159,13 +159,34 @@
   .svc-list li::before { content: "—"; color: var(--violet); flex: 0 0 auto; }
   .svc-list li b { color: var(--text); font-weight: 600; }
   .svc-media { position: relative; }
-  .svc-media img {
-    width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--line);
+  .svc-ba {
+    position: relative; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid var(--line);
+    cursor: ew-resize; touch-action: none; user-select: none;
     transform: scale(1.08); clip-path: inset(0 0 100% 0);
     transition: transform 1.4s cubic-bezier(.2,.7,.2,1), clip-path 1.1s cubic-bezier(.76,0,.24,1);
   }
-  .svc-media.in img { transform: scale(1); clip-path: inset(0 0 0 0); }
-  @media (prefers-reduced-motion: reduce) { .svc-media img { transform: none; clip-path: none; transition: none; } }
+  .svc-media.in .svc-ba { transform: scale(1); clip-path: inset(0 0 0 0); }
+  .svc-ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .svc-ba .ba-before-img { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .svc-ba .ba-handle {
+    position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 1px; background: #fff;
+    box-shadow: 0 0 18px rgba(255,255,255,.6); z-index: 4;
+  }
+  .svc-ba .ba-handle::after {
+    content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.85);
+    background: rgba(10,8,16,.55); backdrop-filter: blur(8px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1.5'%3E%3Cpath d='M8 7l-5 5 5 5M16 7l5 5-5 5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: center; background-size: 19px;
+  }
+  .svc-ba .ba-tag {
+    position: absolute; top: 16px; z-index: 3; font-size: 10px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+    padding: 7px 14px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.16);
+    background: rgba(7,7,10,.5); color: rgba(255,255,255,.85);
+  }
+  .svc-ba .ba-tag.l { left: 16px; } .svc-ba .ba-tag.r { right: 16px; color: var(--violet); border-color: var(--line-2); }
+  .svc-ba-note { text-align: center; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-top: 14px; font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { .svc-ba { transform: none; clip-path: none; transition: none; } }
 
   /* ================= GALERIE ================= */
   .masonry { columns: 3; column-gap: 26px; }
@@ -501,7 +522,15 @@
       </ul>
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20retapitare%20interior." target="_blank" rel="noopener">Cere ofertă pentru retapitare</a>
     </div>
-    <div class="svc-media reveal"><img src="assets/img/svc-retapitari.jpg" alt="Scaune din piele uzate, înainte de retapitare" loading="lazy"></div>
+    <div class="svc-media reveal">
+      <div class="svc-ba" data-slider>
+        <img src="assets/img/ba-retapitari-dupa.jpg" alt="Scaun retapitat în piele neagră premium" loading="lazy">
+        <img class="ba-before-img" src="assets/img/ba-retapitari-inainte.jpg" alt="Scaun rupt și uzat, înainte de retapitare" loading="lazy">
+        <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
+        <div class="ba-handle"></div>
+      </div>
+      <p class="svc-ba-note">Exemplu — trage bara</p>
+    </div>
   </div>
 </section>
 
@@ -519,7 +548,15 @@
       </ul>
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20detailing%20interior." target="_blank" rel="noopener">Cere ofertă pentru detailing</a>
     </div>
-    <div class="svc-media reveal"><img src="assets/img/svc-detailing.jpg" alt="Interior curat în detaliu, după detailing" loading="lazy"></div>
+    <div class="svc-media reveal">
+      <div class="svc-ba" data-slider>
+        <img src="assets/img/ba-detailing-dupa.jpg" alt="Interior curat, de lux, după detailing" loading="lazy">
+        <img class="ba-before-img" src="assets/img/ba-detailing-inainte.jpg" alt="Interior uzat și murdar, înainte de detailing" loading="lazy">
+        <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
+        <div class="ba-handle"></div>
+      </div>
+      <p class="svc-ba-note">Exemplu — trage bara</p>
+    </div>
   </div>
 </section>
 
@@ -537,7 +574,15 @@
       </ul>
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20polish%20%C8%99i%20corec%C8%9Bie%20vopsea." target="_blank" rel="noopener">Cere ofertă pentru polish</a>
     </div>
-    <div class="svc-media reveal"><img src="assets/img/svc-polish.jpg" alt="Zonă mascată profesional înainte de polish" loading="lazy"></div>
+    <div class="svc-media reveal">
+      <div class="svc-ba" data-slider>
+        <img src="assets/img/ba-polish-dupa.jpg" alt="Limuzină neagră cu luciu de oglindă, după polish" loading="lazy">
+        <img class="ba-before-img" src="assets/img/ba-polish-inainte.jpg" alt="Mașină murdară și mată, înainte de polish" loading="lazy">
+        <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
+        <div class="ba-handle"></div>
+      </div>
+      <p class="svc-ba-note">Exemplu — trage bara</p>
+    </div>
   </div>
 </section>
 
@@ -555,7 +600,15 @@
       </ul>
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20recondi%C8%9Bionare%20faruri." target="_blank" rel="noopener">Cere ofertă pentru faruri</a>
     </div>
-    <div class="svc-media reveal"><img src="assets/img/g-far-mana.jpg" alt="Far recondiționat ținut în mână" loading="lazy"></div>
+    <div class="svc-media reveal">
+      <div class="svc-ba" data-slider>
+        <img src="assets/img/ba-faruri-dupa.jpg" alt="Far limpede și strălucitor, după recondiționare" loading="lazy">
+        <img class="ba-before-img" src="assets/img/ba-faruri-inainte.jpg" alt="Far uzat și îngălbenit, înainte de recondiționare" loading="lazy">
+        <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
+        <div class="ba-handle"></div>
+      </div>
+      <p class="svc-ba-note">Exemplu — trage bara</p>
+    </div>
   </div>
 </section>
 
@@ -573,7 +626,15 @@
       </ul>
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20lumini%20ambientale." target="_blank" rel="noopener">Cere ofertă pentru ambient</a>
     </div>
-    <div class="svc-media reveal"><img src="assets/img/svc-ambient.jpg" alt="Interior cu lumini ambientale violete" loading="lazy"></div>
+    <div class="svc-media reveal">
+      <div class="svc-ba" data-slider>
+        <img src="assets/img/ba-ambient-dupa.jpg" alt="Interior cu iluminare ambientală violetă" loading="lazy">
+        <img class="ba-before-img" src="assets/img/ba-ambient-inainte.jpg" alt="Interior simplu, fără lumini ambientale" loading="lazy">
+        <span class="ba-tag l">Înainte</span><span class="ba-tag r">După</span>
+        <div class="ba-handle"></div>
+      </div>
+      <p class="svc-ba-note">Exemplu — trage bara</p>
+    </div>
   </div>
 </section>
 
@@ -802,8 +863,41 @@
   }, { threshold: .12 });
   document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
 
-  // ===== INTRO CINEMATIC + TITLU LITERĂ CU LITERĂ =====
+  // ===== SLIDERE ÎNAINTE / DUPĂ (în secțiunile de servicii) =====
   var reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("[data-slider]").forEach(function (slider) {
+    var pos = 50;
+    function set(p) { pos = Math.max(5, Math.min(95, p)); slider.style.setProperty("--pos", pos + "%"); }
+    function fromEvent(e) {
+      var r = slider.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+      set((x / r.width) * 100);
+    }
+    var dragging = false;
+    slider.addEventListener("pointerdown", function (e) { dragging = true; slider.setPointerCapture(e.pointerId); fromEvent(e); });
+    slider.addEventListener("pointermove", function (e) { if (dragging) fromEvent(e); });
+    slider.addEventListener("pointerup", function () { dragging = false; });
+    slider.addEventListener("pointercancel", function () { dragging = false; });
+    set(50);
+    if (!reduceMotion) {
+      var played = false;
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !played) {
+            played = true;
+            var t0 = performance.now();
+            (function anim(t) {
+              var k = (t - t0) / 1500;
+              if (k < 1) { set(50 + 30 * Math.sin(k * Math.PI * 2) * (1 - k)); requestAnimationFrame(anim); }
+              else set(50);
+            })(t0);
+          }
+        });
+      }, { threshold: .35 }).observe(slider);
+    }
+  });
+
+  // ===== INTRO CINEMATIC + TITLU LITERĂ CU LITERĂ =====
   var intro = document.getElementById("intro");
   var heroTitle = document.getElementById("heroTitle");
 
