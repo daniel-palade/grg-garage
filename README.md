@@ -1,5 +1,7 @@
 # GRG Garage — Site oficial
 
+**Live:** https://daniel-palade.github.io/grg-garage/ · **Repository:** https://github.com/daniel-palade/grg-garage
+
 **Studio de detailing auto** — retapitări premium, detailing, recondiționare faruri și lumini ambientale.
 Galați · Brăila · [TikTok @grggarage99](https://www.tiktok.com/@grggarage99) · 0724 341 598
 
