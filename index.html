@@ -101,7 +101,7 @@
     background: linear-gradient(180deg, rgba(7,7,10,.55) 0%, rgba(7,7,10,.25) 35%, rgba(7,7,10,.88) 82%, var(--bg) 100%),
                 radial-gradient(70% 60% at 22% 68%, rgba(109,40,217,.22), transparent 65%);
   }
-  .hero-inner { position: relative; z-index: 1; width: 100%; padding: 180px 0 90px; }
+  .hero-inner { position: relative; z-index: 3; width: 100%; padding: 180px 0 90px; }
   .hero h1 {
     font-family: var(--serif); font-weight: 500;
     font-size: clamp(44px, 7.2vw, 96px); line-height: 1.02; letter-spacing: 0;
@@ -153,7 +153,7 @@
   /* ================= GALERIE ================= */
   .masonry { columns: 3; column-gap: 26px; }
   .m-item { position: relative; margin-bottom: 26px; overflow: hidden; border: 1px solid var(--line); break-inside: avoid; }
-  .m-item img { width: 100%; transition: transform 1s cubic-bezier(.2,.7,.3,1), filter .6s; }
+  .m-item img { width: 100%; }
   .m-item::after {
     content: ""; position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 55%, rgba(7,7,10,.85));
@@ -162,7 +162,6 @@
   .m-item .cap { position: absolute; left: 22px; bottom: 18px; z-index: 2; opacity: 0; transform: translateY(12px); transition: .5s .1s; }
   .m-item .cap b { display: block; font-family: var(--serif); font-weight: 500; font-size: 21px; font-style: italic; }
   .m-item .cap span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--violet); font-weight: 600; }
-  .m-item:hover img { transform: scale(1.05); }
   .m-item:hover::after { opacity: 1; }
   .m-item:hover .cap { opacity: 1; transform: none; }
 
@@ -241,6 +240,80 @@
   #waFloat svg { width: 24px; height: 24px; }
   #waFloat:hover { transform: scale(1.08); border-color: var(--violet); box-shadow: 0 16px 50px rgba(139,92,246,.5); }
 
+  /* ================= EFFECTS — intro cinematic ================= */
+  #intro { position: fixed; inset: 0; z-index: 900; pointer-events: none; }
+  #intro .panel { position: absolute; top: 0; bottom: 0; width: 50.5%; background: #07070A; transition: transform 1s cubic-bezier(.76,0,.24,1) .55s; }
+  #intro .panel.l { left: 0; }
+  #intro .panel.r { right: 0; }
+  #intro .logo {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+    font-family: var(--serif); font-style: italic; font-size: 84px; color: var(--violet);
+    text-shadow: 0 0 40px var(--glow); opacity: 1;
+    transition: opacity .4s ease .45s, transform .5s ease .45s;
+  }
+  #intro.done .panel.l { transform: translateX(-101%); }
+  #intro.done .panel.r { transform: translateX(101%); }
+  #intro.done .logo { opacity: 0; transform: translate(-50%,-50%) scale(1.18); }
+  body.no-scroll { overflow: hidden; }
+
+  /* Scroll progress */
+  #progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 500;
+    background: linear-gradient(90deg, var(--violet-deep), var(--violet)); box-shadow: 0 0 12px var(--glow); }
+
+  /* Cursor aura (doar desktop, pointer fin) */
+  #cursorGlow {
+    position: fixed; left: 0; top: 0; z-index: 250; pointer-events: none;
+    width: 420px; height: 420px; margin: -210px 0 0 -210px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,92,246,.14), rgba(139,92,246,.05) 45%, transparent 70%);
+    opacity: 0; transition: opacity .6s;
+  }
+  @media (pointer: fine) { body:hover #cursorGlow { opacity: 1; } }
+  @media (pointer: coarse) { #cursorGlow { display: none; } }
+
+  /* Film grain — textură generată cu Python, animată pe pași */
+  #grain {
+    position: fixed; inset: -120px; z-index: 850; pointer-events: none; opacity: .07;
+    background-image: url("assets/img/grain.png"); background-size: 200px;
+    animation: grainShift 1.2s steps(6) infinite;
+  }
+  @keyframes grainShift {
+    0% { transform: translate(0,0); } 20% { transform: translate(-46px, 34px); }
+    40% { transform: translate(38px, -52px); } 60% { transform: translate(-60px, -18px); }
+    80% { transform: translate(52px, 46px); } 100% { transform: translate(0,0); }
+  }
+
+  /* Hero — titlu literă cu literă */
+  #heroTitle .w { display: inline-block; white-space: nowrap; }
+  #heroTitle .ch {
+    display: inline-block; opacity: 0; transform: translateY(.75em); filter: blur(6px);
+    transition: opacity .7s ease, transform .9s cubic-bezier(.2,.7,.2,1), filter .8s ease;
+    transition-delay: calc(200ms + var(--i) * 26ms);
+  }
+  #heroTitle.show .ch { opacity: 1; transform: none; filter: none; }
+
+  /* Nebulă peste hero (generată cu Python) */
+  .hero-neb { position: absolute; inset: 0; z-index: 1; opacity: .3; mix-blend-mode: screen;
+    -webkit-mask-image: radial-gradient(85% 100% at 28% 62%, rgba(0,0,0,.9) 15%, transparent 70%);
+    mask-image: radial-gradient(85% 100% at 28% 62%, rgba(0,0,0,.9) 15%, transparent 70%); }
+  .hero-neb img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Prăfușcă violetă — canvas */
+  #dust { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+  /* Reveal editorial — galerie & video */
+  .m-item img, .v-item video { transform: scale(1.08); clip-path: inset(0 0 100% 0); transition: transform 1.4s cubic-bezier(.2,.7,.2,1), clip-path 1.1s cubic-bezier(.76,0,.24,1); }
+  .m-item.in img, .v-item.in video { transform: scale(1); clip-path: inset(0 0 0 0); }
+  .m-item.in:hover img { transform: scale(1.05); }
+
+  /* Respectă preferința de mișcare redusă */
+  @media (prefers-reduced-motion: reduce) {
+    #grain, #cursorGlow, #dust { display: none; }
+    #intro { display: none; }
+    .m-item img, .v-item video { transform: none; clip-path: none; transition: none; }
+    #heroTitle .ch { opacity: 1; transform: none; filter: none; transition: none; }
+    * { animation-duration: .01ms !important; transition-duration: .15s !important; }
+  }
+
   /* ================= REVEAL ================= */
   .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
   .reveal.in { opacity: 1; transform: none; }
@@ -274,6 +347,13 @@
 </style>
 </head>
 <body>
+
+<!-- ================= INTRO CINEMATIC ================= -->
+<div id="intro" aria-hidden="true">
+  <div class="panel l"></div>
+  <div class="panel r"></div>
+  <div class="logo">G</div>
+</div>
 
 <!-- ================= HEADER ================= -->
 <header id="header">
@@ -310,9 +390,11 @@
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
   <div class="hero-bg"><img src="assets/img/hero.jpg" alt="Interior auto cu iluminare ambientală violetă — GRG Garage" fetchpriority="high"></div>
+  <div class="hero-neb" aria-hidden="true"><img src="assets/img/nebula.jpg" alt=""></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
   <div class="wrap hero-inner">
     <span class="kicker">Studio de detailing — Galați · Brăila</span>
-    <h1>Mașina ta,<br><em>reinventată</em> din primul detaliu.</h1>
+    <h1 id="heroTitle">Mașina ta,<br><em>reinventată</em> din primul detaliu.</h1>
     <p class="lead">Retapitări premium, detailing profund, recondiționare faruri și lumini ambientale. Fiecare mașină intră în atelier ca un proiect și iese ca o declarație de stil.</p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20ma%C8%99ina%20mea." target="_blank" rel="noopener">
@@ -578,6 +660,11 @@
   </div>
 </footer>
 
+<!-- Efecte globale -->
+<div id="grain" aria-hidden="true"></div>
+<div id="cursorGlow" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+
 <!-- Floating WhatsApp -->
 <a id="waFloat" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83." target="_blank" rel="noopener" aria-label="Scrie pe WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3 4c-.3 0-.7.1-1 .5-.4.4-.9 1-.9 2s.7 2 1 2.4c.4.5 1.9 3 4.6 4 .6.3 1.2.4 1.7.5.7.1 1.4 0 1.9-.2.5-.2 1-.7 1.2-1.2.1-.5.1-1 .1-1.1-.1-.2-.3-.3-.6-.4l-2-.9c-.3-.1-.5-.2-.7.1l-.8 1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2-1.2-.7-.7-1-1.3-1.2-1.6-.1-.3 0-.4.1-.6l.6-.7c.1-.2.1-.4 0-.6l-.8-2c-.2-.4-.4-.4-.6-.4h-.2z"/></svg>
@@ -599,6 +686,137 @@
     entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
   }, { threshold: .12 });
   document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+  // ===== INTRO CINEMATIC + TITLU LITERĂ CU LITERĂ =====
+  var reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var intro = document.getElementById("intro");
+  var heroTitle = document.getElementById("heroTitle");
+
+  function splitChars(el) {
+    var idx = 0;
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (word) {
+            if (!word) return;
+            if (/^\s+$/.test(word)) { frag.appendChild(document.createTextNode(" ")); return; }
+            var w = document.createElement("span"); w.className = "w";
+            word.split("").forEach(function (c) {
+              var s = document.createElement("span"); s.className = "ch";
+              s.style.setProperty("--i", idx++);
+              s.textContent = c;
+              w.appendChild(s);
+            });
+            frag.appendChild(w);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && child.tagName !== "BR") walk(child);
+      });
+    })(el);
+  }
+
+  if (!reduceMotion) {
+    splitChars(heroTitle);
+    document.body.classList.add("no-scroll");
+    var introStarted = false;
+    function startIntro() {
+      if (introStarted) return; introStarted = true;
+      setTimeout(function () {
+        if (intro) intro.classList.add("done");
+        document.body.classList.remove("no-scroll");
+        heroTitle.classList.add("show");
+        setTimeout(function () { if (intro) intro.remove(); }, 1500);
+      }, 750);
+    }
+    if (document.readyState === "complete") startIntro();
+    else window.addEventListener("load", startIntro);
+    setTimeout(startIntro, 3500); // plasă de siguranță
+  } else {
+    heroTitle.classList.add("show");
+    if (intro) intro.remove();
+  }
+
+  // ===== LINIE DE PROGRES LA SCROLL =====
+  var progress = document.getElementById("progress");
+  window.addEventListener("scroll", function () {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+  }, { passive: true });
+
+  // ===== AURĂ PENTRU CURSOR (doar mouse) =====
+  if (matchMedia("(pointer: fine)").matches && !reduceMotion) {
+    var glow = document.getElementById("cursorGlow");
+    var gx = 0, gy = 0, tx = 0, ty = 0;
+    window.addEventListener("mousemove", function (e) { tx = e.clientX; ty = e.clientY; });
+    (function loopGlow() {
+      gx += (tx - gx) * .07; gy += (ty - gy) * .07;
+      glow.style.transform = "translate(" + gx + "px," + gy + "px)";
+      requestAnimationFrame(loopGlow);
+    })();
+
+    // ===== BUTOANE MAGNETICE =====
+    document.querySelectorAll(".btn").forEach(function (btn) {
+      btn.addEventListener("mousemove", function (e) {
+        var r = btn.getBoundingClientRect();
+        var dx = (e.clientX - r.left - r.width / 2) / r.width;
+        var dy = (e.clientY - r.top - r.height / 2) / r.height;
+        btn.style.transform = "translate(" + (dx * 9).toFixed(1) + "px," + (dy * 7).toFixed(1) + "px)";
+      });
+      btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+    });
+  }
+
+  // ===== PRĂFUȘCĂ VIOLETĂ ÎN HERO (canvas) =====
+  var canvas = document.getElementById("dust");
+  var hero = document.querySelector(".hero");
+  if (canvas && hero && !reduceMotion) {
+    var ctx = canvas.getContext("2d");
+    var parts = [], running = false, W = 0, H = 0;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function sizeCanvas() {
+      W = hero.offsetWidth; H = hero.offsetHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + "px"; canvas.style.height = H + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function makeParts() {
+      parts = [];
+      var n = Math.min(90, Math.max(40, Math.floor(W * H / 16000)));
+      for (var i = 0; i < n; i++) parts.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: Math.random() * 2.1 + .7,
+        s: Math.random() * .36 + .08,
+        o: Math.random() * .5 + .3,
+        ph: Math.random() * Math.PI * 2
+      });
+    }
+    function tick() {
+      if (!running) return;
+      ctx.clearRect(0, 0, W, H);
+      var t = performance.now() / 1000;
+      ctx.shadowColor = "rgba(139,92,246,.9)"; ctx.shadowBlur = 8;
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        p.y -= p.s;
+        p.x += Math.sin(t * .6 + p.ph) * .16;
+        if (p.y < -4) { p.y = H + 4; p.x = Math.random() * W; }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, 6.283);
+        ctx.fillStyle = "rgba(167,139,250," + (p.o * (.6 + .4 * Math.sin(t * 1.4 + p.ph))).toFixed(3) + ")";
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    sizeCanvas(); makeParts();
+    window.addEventListener("resize", function () { sizeCanvas(); makeParts(); });
+    new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; tick(); }
+        else if (!e.isIntersecting) running = false;
+      });
+    }).observe(hero);
+  }
 
   // Parallax subtil pe hero
   var heroBg = document.querySelector(".hero-bg");

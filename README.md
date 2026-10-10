@@ -19,6 +19,11 @@ README.md
 - Fără emoji-uri — iconițe SVG minimalist desenate la linie
 - Hero cinematografic cu poză reală din atelier + parallax subtil
 - Galerie masonry cu captions la hover, secțiune video, pași de proces, ofertă personalizată
+- **Tranziții cinematice**: intro cu perdele + monograma, titlul hero literă-cu-litră (blur-in),
+  prăfușcă violetă plutind pe canvas, film grain peste tot site-ul (textură generată cu Python),
+  nebula violetă mascată în zona titlului (generată cu Python), cursor cu aură, butoane magnetice,
+  linie de progres la scroll, reveal editorial cu clip-path pe galerie
+- Toate efectele respectă `prefers-reduced-motion` (se dezactivează pentru utilizatorii sensibili)
 - 100% responsive (desktop / tabletă / mobil)
 
 ## Cum îl deschizi
