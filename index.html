@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRG Garage — Studio de Detailing Auto | Galați · Brăila</title>
+<meta name="description" content="GRG Garage — retapitări premium, detailing auto, recondiționare faruri și lumini ambientale. Un studio, un standard: perfecțiunea. Galați și Brăila.">
+<meta property="og:title" content="GRG Garage — Studio de Detailing Auto">
+<meta property="og:description" content="Retapitări premium, detailing, recondiționare faruri și lumini ambientale în Galați și Brăila.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307070A'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='30' font-style='italic' fill='%23A78BFA' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ================= TOKENS & RESET ================= */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #07070A;
+    --bg-2: #0C0B12;
+    --line: rgba(255,255,255,.08);
+    --line-2: rgba(167,139,250,.35);
+    --text: #ECEAF2;
+    --muted: #9B94AD;
+    --violet: #A78BFA;
+    --violet-2: #8B5CF6;
+    --violet-deep: #6D28D9;
+    --glow: rgba(139,92,246,.45);
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans: "Manrope", "Segoe UI", Arial, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 400; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img, video, svg { display: block; max-width: 100%; }
+  ::selection { background: var(--violet-deep); color: #fff; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+  /* ================= TYPO HELPERS ================= */
+  .kicker {
+    display: inline-flex; align-items: center; gap: 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--violet);
+  }
+  .kicker::before { content: ""; width: 44px; height: 1px; background: linear-gradient(90deg, transparent, var(--violet)); }
+  .h-serif { font-family: var(--serif); font-weight: 500; line-height: 1.08; letter-spacing: .2px; }
+  h2.title { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.06; margin-bottom: 18px; }
+  h2.title em { font-style: italic; color: var(--violet); }
+  .sub { color: var(--muted); font-size: 16.5px; font-weight: 300; max-width: 600px; }
+
+  /* ================= BUTTONS ================= */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 17px 34px; border-radius: 2px; cursor: pointer; border: 1px solid transparent; transition: .35s cubic-bezier(.2,.7,.3,1); white-space: nowrap;
+  }
+  .btn svg { width: 15px; height: 15px; }
+  .btn-solid { background: linear-gradient(135deg, var(--violet-2), var(--violet-deep)); color: #fff; box-shadow: 0 10px 36px rgba(109,40,217,.4); }
+  .btn-solid:hover { transform: translateY(-2px); box-shadow: 0 16px 46px rgba(139,92,246,.55); }
+  .btn-ghost { border-color: rgba(255,255,255,.18); color: var(--text); background: rgba(255,255,255,.02); backdrop-filter: blur(6px); }
+  .btn-ghost:hover { border-color: var(--violet); color: var(--violet); }
+
+  /* ================= HEADER ================= */
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 200; transition: .4s;
+    background: linear-gradient(180deg, rgba(7,7,10,.75), transparent);
+  }
+  header.scrolled { background: rgba(7,7,10,.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 84px; transition: .4s; }
+  header.scrolled .nav { height: 68px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand .mark {
+    width: 44px; height: 44px; border: 1px solid var(--line-2); border-radius: 2px;
+    display: grid; place-items: center;
+    font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--violet);
+    box-shadow: inset 0 0 18px rgba(139,92,246,.18);
+  }
+  .brand .word { line-height: 1.15; }
+  .brand .word b { font-family: var(--serif); font-weight: 600; font-size: 19px; letter-spacing: 4px; display: block; }
+  .brand .word b span { color: var(--violet); }
+  .brand .word small { font-size: 9px; letter-spacing: 5px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 40px; }
+  .nav-links a { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); position: relative; padding: 6px 0; transition: color .3s; }
+  .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--violet); transition: width .35s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { display: flex; align-items: center; gap: 18px; }
+  .nav-phone { font-size: 13px; font-weight: 600; letter-spacing: 1px; color: var(--muted); }
+  .nav-phone:hover { color: var(--violet); }
+  #menuBtn { display: none; background: none; border: 0; color: var(--text); cursor: pointer; width: 40px; height: 40px; }
+  #menuBtn svg { width: 26px; height: 26px; }
+  #mobileMenu { display: none; flex-direction: column; padding: 6px 32px 26px; border-top: 1px solid var(--line); }
+  #mobileMenu a { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); padding: 15px 0; border-bottom: 1px solid var(--line); }
+  #mobileMenu.open { display: flex; }
+
+  /* ================= HERO ================= */
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero-bg { position: absolute; inset: -60px 0; z-index: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,7,10,.55) 0%, rgba(7,7,10,.25) 35%, rgba(7,7,10,.88) 82%, var(--bg) 100%),
+                radial-gradient(70% 60% at 22% 68%, rgba(109,40,217,.22), transparent 65%);
+  }
+  .hero-inner { position: relative; z-index: 1; width: 100%; padding: 180px 0 90px; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(44px, 7.2vw, 96px); line-height: 1.02; letter-spacing: 0;
+    margin: 26px 0 24px; max-width: 820px;
+  }
+  .hero h1 em { font-style: italic; color: var(--violet); text-shadow: 0 0 46px var(--glow); }
+  .hero p.lead { color: #C9C3DA; font-weight: 300; font-size: 17px; max-width: 520px; margin-bottom: 42px; }
+  .hero-cta { display: flex; gap: 18px; flex-wrap: wrap; }
+  .hero-meta { display: flex; gap: 40px; margin-top: 64px; flex-wrap: wrap; }
+  .hero-meta div { color: var(--muted); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; border-left: 1px solid var(--line-2); padding-left: 16px; }
+  .hero-meta div b { display: block; font-family: var(--serif); font-style: italic; font-size: 26px; letter-spacing: 1px; color: var(--text); font-weight: 500; text-transform: none; margin-bottom: 2px; }
+
+  /* ================= MARQUEE ================= */
+  .marquee { border-block: 1px solid var(--line); overflow: hidden; background: var(--bg-2); position: relative; }
+  .marquee::before, .marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none; }
+  .marquee::before { left: 0; background: linear-gradient(90deg, var(--bg-2), transparent); }
+  .marquee::after { right: 0; background: linear-gradient(-90deg, var(--bg-2), transparent); }
+  .marquee-track { display: flex; width: max-content; animation: slide 36s linear infinite; }
+  .marquee-track span {
+    display: flex; align-items: center; gap: 34px; padding: 22px 17px;
+    font-family: var(--serif); font-style: italic; font-size: 19px; letter-spacing: 3px; color: var(--muted); white-space: nowrap;
+  }
+  .marquee-track span i { width: 5px; height: 5px; background: var(--violet); transform: rotate(45deg); display: inline-block; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ================= SECTION BASE ================= */
+  section.sect { padding: 130px 0; position: relative; }
+  .sect-head { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; margin-bottom: 70px; }
+  .sect-head .sub { justify-self: end; }
+
+  /* ================= SERVICII (rows) ================= */
+  .rows { border-top: 1px solid var(--line); }
+  .row-item {
+    display: grid; grid-template-columns: 90px 1fr 1.1fr 60px; gap: 30px; align-items: center;
+    padding: 40px 10px; border-bottom: 1px solid var(--line); position: relative; cursor: default;
+    transition: background .4s, padding .4s;
+  }
+  .row-item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--violet-2); transform: scaleY(0); transition: transform .4s; transform-origin: top; box-shadow: 0 0 22px var(--glow); }
+  .row-item:hover { background: rgba(139,92,246,.04); padding-left: 28px; }
+  .row-item:hover::before { transform: scaleY(1); }
+  .row-item .no { font-family: var(--serif); font-style: italic; font-size: 40px; color: transparent; -webkit-text-stroke: 1px rgba(167,139,250,.55); font-weight: 500; }
+  .row-item h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.1; }
+  .row-item h3 span { display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--violet); margin-top: 8px; }
+  .row-item p { color: var(--muted); font-size: 14.5px; font-weight: 300; }
+  .row-item .arr { justify-self: end; color: var(--muted); transition: .35s; }
+  .row-item .arr svg { width: 30px; height: 30px; }
+  .row-item:hover .arr { color: var(--violet); transform: translateX(8px); }
+
+  /* ================= GALERIE ================= */
+  .masonry { columns: 3; column-gap: 26px; }
+  .m-item { position: relative; margin-bottom: 26px; overflow: hidden; border: 1px solid var(--line); break-inside: avoid; }
+  .m-item img { width: 100%; transition: transform 1s cubic-bezier(.2,.7,.3,1), filter .6s; }
+  .m-item::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(7,7,10,.85));
+    opacity: 0; transition: .5s;
+  }
+  .m-item .cap { position: absolute; left: 22px; bottom: 18px; z-index: 2; opacity: 0; transform: translateY(12px); transition: .5s .1s; }
+  .m-item .cap b { display: block; font-family: var(--serif); font-weight: 500; font-size: 21px; font-style: italic; }
+  .m-item .cap span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--violet); font-weight: 600; }
+  .m-item:hover img { transform: scale(1.05); }
+  .m-item:hover::after { opacity: 1; }
+  .m-item:hover .cap { opacity: 1; transform: none; }
+
+  /* ================= VIDEO ================= */
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .v-item { border: 1px solid var(--line); background: var(--bg-2); }
+  .v-item video { width: 100%; aspect-ratio: 9 / 13; object-fit: cover; background: #050508; }
+  .v-item .cap { padding: 18px 20px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .v-item .cap b { font-family: var(--serif); font-weight: 500; font-size: 19px; }
+  .v-item .cap span { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); font-weight: 600; white-space: nowrap; }
+
+  /* ================= PROCES ================= */
+  .process { background: var(--bg-2); border-block: 1px solid var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .step { padding: 44px 34px 34px; border-left: 1px solid var(--line); position: relative; }
+  .step:first-child { border-left: 0; }
+  .step .no { font-family: var(--serif); font-style: italic; font-size: 52px; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(167,139,250,.5); margin-bottom: 22px; font-weight: 500; }
+  .step h3 { font-family: var(--serif); font-weight: 500; font-size: 24px; margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: 14px; font-weight: 300; }
+
+  /* ================= OFERTĂ ================= */
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
+  .price-card { border: 1px solid var(--line); background: var(--bg-2); padding: 46px 40px; display: flex; flex-direction: column; position: relative; transition: .4s; }
+  .price-card:hover { border-color: var(--line-2); transform: translateY(-6px); }
+  .price-card.featured { border-color: var(--line-2); box-shadow: 0 0 0 1px rgba(139,92,246,.25), 0 30px 80px rgba(0,0,0,.5), inset 0 0 60px rgba(109,40,217,.06); }
+  .price-card .tier { font-size: 10.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--violet); font-weight: 600; margin-bottom: 14px; }
+  .price-card h3 { font-family: var(--serif); font-weight: 500; font-size: 32px; line-height: 1.1; margin-bottom: 8px; }
+  .price-card .desc { color: var(--muted); font-size: 13.5px; font-weight: 300; margin-bottom: 30px; }
+  .price-card .val { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--violet); padding-bottom: 24px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+  .price-card ul { list-style: none; display: grid; gap: 13px; margin-bottom: 38px; }
+  .price-card li { color: var(--muted); font-size: 14px; font-weight: 300; display: flex; gap: 14px; align-items: baseline; }
+  .price-card li::before { content: "—"; color: var(--violet); flex: 0 0 auto; }
+  .price-card .btn { margin-top: auto; }
+  .price-note { text-align: center; margin-top: 36px; color: var(--muted); font-size: 13px; font-weight: 300; max-width: 620px; margin-inline: auto; }
+  .price-note b { color: var(--text); font-weight: 600; }
+
+  /* ================= CTA BAND ================= */
+  .cta-band { position: relative; padding: 150px 0; overflow: hidden; border-block: 1px solid var(--line); }
+  .cta-band .bg { position: absolute; inset: 0; }
+  .cta-band .bg img { width: 100%; height: 100%; object-fit: cover; }
+  .cta-band .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,7,10,.92), rgba(7,7,10,.82)), radial-gradient(55% 60% at 50% 100%, rgba(109,40,217,.28), transparent 70%); }
+  .cta-band .inner { position: relative; z-index: 2; text-align: center; }
+  .cta-band h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5.4vw, 66px); line-height: 1.06; margin: 20px 0 18px; }
+  .cta-band h2 em { font-style: italic; color: var(--violet); text-shadow: 0 0 40px var(--glow); }
+  .cta-band p { color: var(--muted); font-weight: 300; max-width: 480px; margin: 0 auto 44px; }
+  .cta-band .actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+  /* ================= CONTACT ================= */
+  .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: start; }
+  .c-list { display: grid; gap: 2px; background: var(--line); border: 1px solid var(--line); }
+  .c-item { display: flex; align-items: center; gap: 22px; padding: 26px 30px; background: var(--bg-2); transition: .35s; }
+  a.c-item:hover, div.c-item:hover { background: #131019; }
+  .c-item .ic { width: 46px; height: 46px; flex: 0 0 46px; border: 1px solid var(--line-2); border-radius: 2px; display: grid; place-items: center; color: var(--violet); }
+  .c-item .ic svg { width: 20px; height: 20px; }
+  .c-item b { display: block; font-size: 16px; font-weight: 600; letter-spacing: .5px; }
+  .c-item span { color: var(--muted); font-size: 13px; font-weight: 300; }
+
+  /* ================= FOOTER ================= */
+  footer { border-top: 1px solid var(--line); padding: 54px 0; background: var(--bg); }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
+  .foot .l { display: flex; align-items: center; gap: 16px; }
+  .foot .l .mark { width: 40px; height: 40px; border: 1px solid var(--line-2); display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-size: 21px; color: var(--violet); }
+  .foot .l small { display: block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .foot .r { text-align: right; color: var(--muted); font-size: 12px; font-weight: 300; }
+  .foot .r a { color: var(--muted); } .foot .r a:hover { color: var(--violet); }
+
+  /* ================= FLOATING WHATSAPP ================= */
+  #waFloat {
+    position: fixed; right: 26px; bottom: 26px; z-index: 300;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(12,11,18,.85); border: 1px solid var(--line-2);
+    display: grid; place-items: center; color: var(--violet);
+    backdrop-filter: blur(10px); box-shadow: 0 12px 40px rgba(109,40,217,.35);
+    transition: .3s;
+  }
+  #waFloat svg { width: 24px; height: 24px; }
+  #waFloat:hover { transform: scale(1.08); border-color: var(--violet); box-shadow: 0 16px 50px rgba(139,92,246,.5); }
+
+  /* ================= REVEAL ================= */
+  .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 1080px) {
+    .ba-grid, .video-grid, .price-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .step { border-left: 0; border-top: 1px solid var(--line); }
+    .masonry { columns: 2; }
+    .sect-head { grid-template-columns: 1fr; align-items: start; gap: 20px; }
+    .sect-head .sub { justify-self: start; }
+    .row-item { grid-template-columns: 60px 1fr 44px; }
+    .row-item p { grid-column: 2 / 3; grid-row: 2; }
+  }
+  @media (max-width: 700px) {
+    .wrap { padding: 0 20px; }
+    section.sect { padding: 84px 0; }
+    .nav-links, .nav-phone { display: none; }
+    #menuBtn { display: grid; place-items: center; }
+    .nav-cta .btn { padding: 13px 22px; font-size: 10px; }
+    .ba-grid, .video-grid, .price-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .masonry { columns: 1; }
+    .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+    .row-item { grid-template-columns: 44px 1fr 34px; gap: 16px; padding: 30px 4px; }
+    .row-item .no { font-size: 28px; }
+    .hero-meta { gap: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="GRG Garage">
+      <div class="mark">G</div>
+      <div class="word">
+        <b>GRG <span>GARAGE</span></b>
+        <small>Detailing Studio</small>
+      </div>
+    </a>
+    <nav class="nav-links" aria-label="Navigare principală">
+      <a href="#servicii">Servicii</a>
+      <a href="#portofoliu">Portofoliu</a>
+      <a href="#oferta">Ofertă</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:0724341598">0724 341 598</a>
+      <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20ma%C8%99ina%20mea." target="_blank" rel="noopener">Programare</a>
+      <button id="menuBtn" aria-label="Meniu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobileMenu" aria-label="Meniu mobil">
+    <a href="#servicii">Servicii</a>
+    <a href="#portofoliu">Portofoliu</a>
+    <a href="#oferta">Ofertă</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="assets/img/hero.jpg" alt="Interior auto cu iluminare ambientală violetă — GRG Garage" fetchpriority="high"></div>
+  <div class="wrap hero-inner">
+    <span class="kicker">Studio de detailing — Galați · Brăila</span>
+    <h1>Mașina ta,<br><em>reinventată</em> din primul detaliu.</h1>
+    <p class="lead">Retapitări premium, detailing profund, recondiționare faruri și lumini ambientale. Fiecare mașină intră în atelier ca un proiect și iese ca o declarație de stil.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20ma%C8%99ina%20mea." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3 4c-.3 0-.7.1-1 .5-.4.4-.9 1-.9 2s.7 2 1 2.4c.4.5 1.9 3 4.6 4 .6.3 1.2.4 1.7.5.7.1 1.4 0 1.9-.2.5-.2 1-.7 1.2-1.2.1-.5.1-1 .1-1.1-.1-.2-.3-.3-.6-.4l-2-.9c-.3-.1-.5-.2-.7.1l-.8 1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2-1.2-.7-.7-1-1.3-1.2-1.6-.1-.3 0-.4.1-.6l.6-.7c.1-.2.1-.4 0-.6l-.8-2c-.2-.4-.4-.4-.6-.4h-.2z"/></svg>
+        Cere ofertă privată
+      </a>
+      <a class="btn btn-ghost" href="#portofoliu">Vezi portofoliul</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>01</b>Retapitări</div>
+      <div><b>02</b>Detailing</div>
+      <div><b>03</b>Faruri</div>
+      <div><b>04</b>Ambient</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Retapitări <i></i> Detailing Interior <i></i> Polish &amp; Corecție Vopsea <i></i> Recondiționare Faruri <i></i> Lumini Ambientale <i></i> Tavane Înstelate Premium <i></i> </span>
+    <span>Retapitări <i></i> Detailing Interior <i></i> Polish &amp; Corecție Vopsea <i></i> Recondiționare Faruri <i></i> Lumini Ambientale <i></i> Tavane Înstelate Premium <i></i> </span>
+  </div>
+</div>
+
+<!-- ================= SERVICII ================= -->
+<section class="sect" id="servicii">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <span class="kicker">Servicii</span>
+        <h2 class="title">Meșteșug, nu <em>întreținere</em>.</h2>
+      </div>
+      <p class="sub">Fiecare serviciu e adaptat stării reale a mașinii. Nu vindem pachete standard — construim tratamentul care are sens pentru vehiculul tău.</p>
+    </div>
+
+    <div class="rows">
+      <div class="row-item reveal">
+        <div class="no">01</div>
+        <h3>Retapitări interioare<span>Tapiserie &amp; recondiționare</span></h3>
+        <p>Scaune, panouri laterale, volane, schimbătoare și tavane — reconstruite cu materiale premium: piele ecologică, Alcantara și textile tehnice, cusute pe măsura fiecărui interior.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h16m0 0-6-6m6 6-6 6"/></svg></div>
+      </div>
+      <div class="row-item reveal">
+        <div class="no">02</div>
+        <h3>Detailing interior<span>Curățenie profundă</span></h3>
+        <p>Extracție profesională a scaunelor și covorașelor, degresare totală a plasticurilor, igienizare și refacerea mirosului de fabrică. Până în cel mai mic unghiișor.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h16m0 0-6-6m6 6-6 6"/></svg></div>
+      </div>
+      <div class="row-item reveal">
+        <div class="no">03</div>
+        <h3>Polish &amp; corecție vopsea<span>Luciu de oglindă</span></h3>
+        <p>Eliminarea microzgârieturilor și a marcajelor de spălare, în pași calculați pe duritatea vopselei tale. Rezultatul: un luciu de oglindă care se vede de la distanță.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h16m0 0-6-6m6 6-6 6"/></svg></div>
+      </div>
+      <div class="row-item reveal">
+        <div class="no">04</div>
+        <h3>Recondiționare faruri<span>Claritate ca în ziua livrării</span></h3>
+        <p>Faruri îngălbenite sau matuite — șlefuite în pași finoși și sigilate cu tratament de protecție. Luminozitatea și aspectul revin la standardele de fabrică.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h16m0 0-6-6m6 6-6 6"/></svg></div>
+      </div>
+      <div class="row-item reveal">
+        <div class="no">05</div>
+        <h3>Lumini ambientale<span>Atmosferă premium</span></h3>
+        <p>Montaj LED ambiental sub bord, în portiere și consolă — executat invizibil, cu cablaj ascuns. Efectul acela de mașină de expoziție, fără nicio urmă de improvizare.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h16m0 0-6-6m6 6-6 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTOFOLIU ================= -->
+<section class="sect" id="portofoliu">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <span class="kicker">Portofoliu</span>
+        <h2 class="title">Detalii care <em>vorbesc</em> de la sine.</h2>
+      </div>
+      <p class="sub">O selecție din lucrările recente — materiale, cusături, lumini și reflexii, exact cum pleacă din atelier.</p>
+    </div>
+
+    <div class="masonry">
+      <div class="m-item reveal"><img src="assets/img/g-scaun-retapitat.jpg" alt="Scaun retapitat cu material premium" loading="lazy"><div class="cap"><span>Retapitări</span><b>Scaun — țesătură tehnică</b></div></div>
+      <div class="m-item reveal"><img src="assets/img/g-bord-mov.jpg" alt="Bord sub iluminare ambientală violetă" loading="lazy"><div class="cap"><span>Ambient</span><b>Bord în lumini violete</b></div></div>
+      <div class="m-item reveal"><img src="assets/img/g-cabina-bej.jpg" alt="Cabină bej de lux" loading="lazy"><div class="cap"><span>Interior</span><b>Cabină — piele bej</b></div></div>
+      <div class="m-item reveal"><img src="assets/img/g-scaun-mov.jpg" alt="Scaun șofer sub lumină ambientală" loading="lazy"><div class="cap"><span>Ambient</span><b>Scaunul șoferului</b></div></div>
+      <div class="m-item reveal"><img src="assets/img/g-scaun-consola.jpg" alt="Scaun și consolă retapitate" loading="lazy"><div class="cap"><span>Retapitări</span><b>Scaun &amp; schimbător</b></div></div>
+      <div class="m-item reveal"><img src="assets/img/g-consola-mov.jpg" alt="Consolă centrală cu iluminare ambientală" loading="lazy"><div class="cap"><span>Ambient</span><b>Consolă centrală</b></div></div>
+      <div class="m-item reveal"><img src="assets/img/g-far-mana.jpg" alt="Far recondiționat ținut în mână" loading="lazy"><div class="cap"><span>Optică</span><b>Far recondiționat</b></div></div>
+      <div class="m-item reveal"><img src="assets/img/g-cabina-soare.jpg" alt="Cabină cu trapă deschisă" loading="lazy"><div class="cap"><span>Interior</span><b>Lumină naturală</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section class="sect" style="background: var(--bg-2); border-block: 1px solid var(--line)">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <span class="kicker">În mișcare</span>
+        <h2 class="title">Atelierul, <em>pe viu</em>.</h2>
+      </div>
+      <p class="sub">Câteva momente din procesul de transformare — filmate în timpul lucrărilor reale.</p>
+    </div>
+
+    <div class="video-grid">
+      <div class="v-item reveal">
+        <video src="assets/video/lucrare-1.mp4" controls preload="metadata" playsinline></video>
+        <div class="cap"><b>Faruri — în lucru</b><span>Optică</span></div>
+      </div>
+      <div class="v-item reveal d1">
+        <video src="assets/video/lucrare-2.mp4" controls preload="metadata" playsinline></video>
+        <div class="cap"><b>Ambient — instalare</b><span>Interior</span></div>
+      </div>
+      <div class="v-item reveal d2">
+        <video src="assets/video/lucrare-3.mp4" controls preload="metadata" playsinline></video>
+        <div class="cap"><b>Ambient — atmosfera finală</b><span>Interior</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCES ================= -->
+<section class="sect process">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <span class="kicker">Proces</span>
+        <h2 class="title">Patru pași. <em>Zero</em> surprize.</h2>
+      </div>
+      <p class="sub">Un flux simplu și previzibil, de la primul mesaj până la predarea mașinii.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="no">01</div><h3>Consultare</h3><p>Ne scrii pe WhatsApp ce vrei să schimbăm. Pozele mașinii ajută — oferta se face pe concret, nu pe ghicit.</p></div>
+      <div class="step reveal d1"><div class="no">02</div><h3>Ofertă clară</h3><p>Îți spunem exact ce facem, cât durează și cât costă. Prețul rămâne neschimbat pe durata lucrării.</p></div>
+      <div class="step reveal d2"><div class="no">03</div><h3>Programare</h3><p>Stabilim ziua și locul — Galați sau Brăila. Tu predai mașina, noi preluăm proiectul.</p></div>
+      <div class="step reveal d3"><div class="no">04</div><h3>Predare</h3><p>Vii după o mașină pe care abia o recunoști — plus sfaturi de întreținere ca rezultatul să dureze.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFERTĂ ================= -->
+<section class="sect" id="oferta">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <span class="kicker">Ofertă</span>
+        <h2 class="title">Prețul se construiește <em>împreună</em>.</h2>
+      </div>
+      <p class="sub">Fiecare mașină e o altă poveste — model, uzură, suprafață. De aceea trimitem ofertă personalizată în aceeași zi, pe baza pozelor.</p>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <div class="tier">Nivel I</div>
+        <h3>Interior Fresh</h3>
+        <p class="desc">Pentru interiorul care are nevoie de o resetare completă.</p>
+        <div class="val">Ofertă personalizată</div>
+        <ul>
+          <li>Curățare profundă &amp; extracție</li>
+          <li>Degresare plasticuri și consolă</li>
+          <li>Igienizare &amp; miros de fabrică</li>
+          <li>Tratare piele și textile</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20detailing%20interior." target="_blank" rel="noopener">Cere ofertă</a>
+      </div>
+
+      <div class="price-card featured reveal d1">
+        <div class="tier">Nivel II</div>
+        <h3>Showroom Shine</h3>
+        <p class="desc">Pentru vopseaua care merită să arate ca în ziua livrării.</p>
+        <div class="val">Ofertă personalizată</div>
+        <ul>
+          <li>Spălare &amp; decontaminare profesională</li>
+          <li>Polish corector, pe pași calculați</li>
+          <li>Protecție și luciu de durată</li>
+          <li>Recondiționare faruri, la cerere</li>
+        </ul>
+        <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20polish%20%C8%99i%20exterior." target="_blank" rel="noopener">Cere ofertă</a>
+      </div>
+
+      <div class="price-card reveal d2">
+        <div class="tier">Nivel III</div>
+        <h3>Full Makeover</h3>
+        <p class="desc">Interior, exterior și retapitere — totul într-un singur proiect.</p>
+        <div class="val">Ofertă personalizată</div>
+        <ul>
+          <li>Tot ce include Showroom Shine</li>
+          <li>Tot ce include Interior Fresh</li>
+          <li>Retapitări scaune și panouri</li>
+          <li>Lumini ambientale cu reducere</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20pachetul%20complet." target="_blank" rel="noopener">Cere ofertă</a>
+      </div>
+    </div>
+
+    <p class="price-note">Trimite 2–3 poze cu mașina pe WhatsApp și primești <b>oferta exactă în aceeași zi</b> — fără costuri ascunse și fără „se mai vede".</p>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="cta-band">
+  <div class="bg"><img src="assets/img/cta-bg.jpg" alt="" loading="lazy"></div>
+  <div class="wrap inner">
+    <span class="kicker" style="justify-content:center">Următorul pas</span>
+    <h2>Pregătit de <em>transformare</em>?</h2>
+    <p>Un mesaj, câteva poze și o discuție scurtă. Restul îl facem noi.</p>
+    <div class="actions">
+      <a class="btn btn-solid" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83%20pentru%20ma%C8%99ina%20mea." target="_blank" rel="noopener">Discuție pe WhatsApp</a>
+      <a class="btn btn-ghost" href="tel:0724341598">Sună: 0724 341 598</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="sect" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="kicker">Contact</span>
+      <h2 class="title">Vorbim despre <em>mașina ta</em>.</h2>
+      <p class="sub" style="margin-bottom:36px">Răspuns rapid în timpul zilei. Cel mai eficient: un mesaj WhatsApp cu pozele problemei.</p>
+      <a class="btn btn-ghost" href="https://www.tiktok.com/@grggarage99" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><path d="M16.6 3c.4 2.2 1.8 3.7 4 4v3c-1.6 0-3-.5-4-1.2v6.4c0 3.3-2.5 5.3-5.4 5.3-2.7 0-5-2-5-4.8 0-3 2.5-5.1 5.6-4.9v3.1c-1.4-.3-2.7.5-2.7 1.9 0 1.1.9 1.9 2 1.9 1.3 0 2.2-.9 2.2-2.6V3h3.3z"/></svg>
+        @grggarage99
+      </a>
+    </div>
+    <div class="c-list reveal">
+      <a class="c-item" href="https://wa.me/40724341598?text=Bun%C4%83!%20A%C8%99%20vrea%20o%20ofert%C4%83." target="_blank" rel="noopener">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 8.7c.3-.7.6-.7.9-.7h.7c.2 0 .5 0 .7.5l.9 2.1c.1.3 0 .5-.1.7l-.6.7c-.1.2-.2.3-.1.5.2.3.9 1.4 2 2.2.7.6 1.2.8 1.5.9.2.1.4 0 .5-.1l.8-.9c.2-.2.4-.2.6-.1l2 .9c.3.1.4.2.5.4 0 .2 0 .7-.1 1.1-.2.5-.7 1-1.2 1.2-.5.2-1.2.3-1.9.2-.5-.1-1.1-.2-1.7-.5-2.7-1-4.2-3.5-4.6-4-.3-.4-1-1.4-1-2.4s.5-1.6.9-2c.3-.4.7-.5 1-.5z"/></svg></div>
+        <div><b>WhatsApp — 0724 341 598</b><span>Răspuns rapid, ofertă în aceeași zi</span></div>
+      </a>
+      <a class="c-item" href="tel:0724341598">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
+        <div><b>Telefon — 0724 341 598</b><span>Programări, zilnic în timpul zilei</span></div>
+      </a>
+      <a class="c-item" href="https://www.tiktok.com/@grggarage99" target="_blank" rel="noopener">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M16.5 4c.4 2.1 1.8 3.5 3.9 3.8v3c-1.6 0-2.9-.5-3.9-1.2v6.2c0 3.2-2.4 5.2-5.3 5.2-2.6 0-4.9-2-4.9-4.7 0-2.9 2.4-5 5.5-4.8v3c-1.4-.3-2.6.5-2.6 1.9 0 1 .8 1.8 2 1.8 1.2 0 2.1-.9 2.1-2.5V4h3.2z"/></svg></div>
+        <div><b>TikTok — @grggarage99</b><span>Lucrările în mișcare, înainte de vizită</span></div>
+      </a>
+      <div class="c-item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div><b>Galați · Brăila</b><span>Locația exactă se confirmă la programare</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot">
+    <div class="l">
+      <div class="mark">G</div>
+      <div>
+        <b style="font-family:var(--serif);font-size:17px;letter-spacing:3px;">GRG GARAGE</b>
+        <small>Detailing Studio</small>
+      </div>
+    </div>
+    <div class="r">
+      © 2026 GRG Garage — Retapitări &amp; Detailing Auto<br>
+      <a href="https://www.tiktok.com/@grggarage99" target="_blank" rel="noopener">TikTok</a> · <a href="tel:0724341598">0724 341 598</a> · Galați — Brăila
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a id="waFloat" href="https://wa.me/40724341598?text=Bun%C4%83!%20Vreau%20o%20ofert%C4%83." target="_blank" rel="noopener" aria-label="Scrie pe WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3 4c-.3 0-.7.1-1 .5-.4.4-.9 1-.9 2s.7 2 1 2.4c.4.5 1.9 3 4.6 4 .6.3 1.2.4 1.7.5.7.1 1.4 0 1.9-.2.5-.2 1-.7 1.2-1.2.1-.5.1-1 .1-1.1-.1-.2-.3-.3-.6-.4l-2-.9c-.3-.1-.5-.2-.7.1l-.8 1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2-1.2-.7-.7-1-1.3-1.2-1.6-.1-.3 0-.4.1-.6l.6-.7c.1-.2.1-.4 0-.6l-.8-2c-.2-.4-.4-.4-.6-.4h-.2z"/></svg>
+</a>
+
+<script>
+  // Header scroll state
+  var header = document.getElementById("header");
+  var onScroll = function () { header.classList.toggle("scrolled", window.scrollY > 40); };
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // Mobile menu
+  var menu = document.getElementById("mobileMenu");
+  document.getElementById("menuBtn").addEventListener("click", function () { menu.classList.toggle("open"); });
+  menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { menu.classList.remove("open"); }); });
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+  // Parallax subtil pe hero
+  var heroBg = document.querySelector(".hero-bg");
+  window.addEventListener("scroll", function () {
+    if (window.scrollY < window.innerHeight) heroBg.style.transform = "translateY(" + window.scrollY * .18 + "px)";
+  }, { passive: true });
+</script>
+</body>
+</html>
